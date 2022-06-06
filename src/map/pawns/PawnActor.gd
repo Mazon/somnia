@@ -45,12 +45,10 @@ func move_to(target_position):
 #	yield(anim.play_walk(), "completed")
 	set_process(true)
 
-
 func bump():
 	set_process(false)
 #	yield(anim.play_bump(), "completed")
 	set_process(true)
-
 
 #func change_skin(pawn_anim: PawnAnim):
 	# Replaces the pawn's animated character with another

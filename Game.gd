@@ -5,9 +5,12 @@ extends Node
 signal combat_started
 
 const combat_arena_scene = preload("res://src/combat/CombatArena.tscn")
+var scenes = {
+	"battle_scene": load("res://scenes/combat.tscn")
+}
 #onready var transition = $Overlays/TransitionColor
 onready var local_map = $level
-#onready var party = $Party as Party
+onready var party = $Party as Party
 #onready var music_player = $MusicPlayer
 #onready var game_over_interface := $GameOverInterface
 #onready var gui := $GUI
@@ -20,9 +23,24 @@ func _ready():
 #	QuestSystem.initialize(self, party)
 #	local_map.spawn_party(party)
 	local_map.visible = true
-	local_map.connect("enemies_encountered", self, "enter_battle")
+	#local_map.connect("enemies_encountered", self, "enter_battle")
+	local_map.connect("enemies_encountered", self, "battle")
 
-
+func battle(new_scene_key):
+	
+	#get_tree().change_scene("res://scenes/level/combat.tscn")
+	get_tree().change_scene("res://src/scenes/BattleScene.tscn")
+	
+	#if scenes.has(new_scene_key):
+	#for scene in $CurrentScene.get_children():
+	#	scene.queue_free()
+	#var new_scene = scenes["battle_scene"].instance()
+	#combat_arena = combat_arena_scene.instance()
+	#add_child(combat_arena)
+	#new_scene.connect("change_scene", self, "_load_scene")
+	#$CurrentScene.add_child(new_scene)
+	emit_signal("combat_started")
+		
 func enter_battle(formation: Formation):
 	# Plays the combat transition animation and initializes the combat scene
 	if transitioning:
@@ -31,10 +49,10 @@ func enter_battle(formation: Formation):
 	#gui.hide()
 #	music_player.play_battle_theme()
 
-	transitioning = true
-#	yield(transition.fade_to_color(), "completed")
+	transitioning = false
+	#yield(transition.fade_to_color(), "completed")
 
-	remove_child(local_map)
+#	remove_child(local_map)
 	combat_arena = combat_arena_scene.instance()
 	add_child(combat_arena)
 	combat_arena.connect("victory", self, "_on_CombatArena_player_victory")

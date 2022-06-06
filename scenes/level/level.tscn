@@ -1,14 +1,12 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://map/groundTilemap_64px.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/map/pawns/actions/StartCombatAction.gd" type="Script" id=3]
 [ext_resource path="res://assets/tilesets/grid/object.png" type="Texture" id=4]
-[ext_resource path="res://scenes/level/Pawns.gd" type="Script" id=5]
+[ext_resource path="res://scenes/level/level.gd" type="Script" id=5]
 [ext_resource path="res://assets/tilesets/grid/actor.png" type="Texture" id=6]
 [ext_resource path="res://assets/tilesets/grid/obstacle.png" type="Texture" id=7]
-[ext_resource path="res://scenes/level/level.gd" type="Script" id=8]
-[ext_resource path="res://src/party/Party.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sprites/battlers/godette.png" type="Texture" id=10]
 [ext_resource path="res://src/combat/battlers/formations/PorcupineFormation001.tscn" type="PackedScene" id=11]
 
@@ -512,94 +510,11 @@ points = PoolVector2Array( 0, 0, 89, 0, 89, 92, 0, 92 )
 } ]
 2/z_index = 0
 
-[sub_resource type="GDScript" id=16]
-script/source = "# Pawn the player can interact with. Could be an NPC, a chest,
-# anything that should react when the player walks next to it
-# or presses a key while sitting next to this pawn.
-# Can work either with raycasts for interactions based on
-# look direction or using an Area2D
-extends PawnActor
-#class_name PawnInteractive
-
-signal interaction_finished(pawn)
-
-#onready var raycasts: Node2D = $Raycasts
-#onready var dialogue_balloon: Sprite = $DialogueBalloon
-onready var collision_shape: CollisionShape2D = $CollisionShape2D
-onready var actions: Node = $Actions
-
-
-export var vanish_on_interaction := false
-export var AUTO_START_INTERACTION := true
-export var sight_distance = 50
-export var facing = {\"up\": true, \"left\": true, \"right\": true, \"down\": true}
-
-
-#func _ready():
-	# Initializes raycast nodes, deactivates the area if using raycasts
-	# for player detection
-	#var use_area = true
-
-#	if use_area:
-#		connect('body_entered', self, '_on_body_entered')
-#		connect('body_exited', self, '_on_body_exited')
-#		set_physics_process(false)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	# Use the area to detect if the user is clicking on the NPCs' interaction zone
-	if event is InputEventMouseButton:
-		var extents = collision_shape.shape.extents
-		var as_rect := Rect2(-extents, extents * 2)
-		if not as_rect.has_point(get_local_mouse_position()):
-			return
-
-
-func _physics_process(delta: float) -> void:
-	# Only runs if using raycasts/specific directions for player detection
-
-		var inactive_count: int = 0
-
-
-
-
-func _on_body_entered(body) -> void:
-	if AUTO_START_INTERACTION:
-		start_interaction()
-
-
-#func _on_body_exited(body: PhysicsBody2D) -> void:
-#	dialogue_balloon.hide()
-
-func start_interaction() -> void:
-	# Pauses the game and play each action under the $Actions node
-	# Actions that transition to another scene (e.g. StartCombatAction) may unpause
-	# the game themselves
-	# PawnInteractive processes even when the game is paused, but not
-	# PawnLeader, the player-controlled pawn
-#	dialogue_balloon.hide()
-	get_tree().paused = true
-	var actions = $Actions.get_children()
-	# An interactive pawn should have some interaction
-	assert(actions != [])
-	for action in actions:
-		action.interact()
-		yield(action, \"finished\")
-	emit_signal(\"interaction_finished\", self)
-	if vanish_on_interaction:
-		queue_free()
-	get_tree().paused = false
-
-
-func _on_PlayerDetector_body_entered(body):
-	print(\"test\")
-"
-
 [sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 10, 7 )
+extents = Vector2( 21, 30 )
 
 [node name="level" type="Node2D"]
-script = ExtResource( 8 )
+script = ExtResource( 5 )
 
 [node name="TileMap" parent="." instance=ExtResource( 2 )]
 tile_set = SubResource( 14 )
@@ -607,22 +522,16 @@ tile_set = SubResource( 14 )
 [node name="GameBoard" type="TileMap" parent="."]
 tile_set = SubResource( 20 )
 cell_size = Vector2( 80, 80 )
+show_collision = true
+collision_layer = 2
 format = 1
 
 [node name="Pawns" type="YSort" parent="GameBoard"]
-script = ExtResource( 5 )
-party_scene = ExtResource( 9 )
 
 [node name="EncounterPawn" type="Area2D" parent="GameBoard/Pawns"]
-position = Vector2( 371, 114 )
-collision_layer = 0
-script = SubResource( 16 )
-facing = {
-"down": false,
-"left": true,
-"right": true,
-"up": true
-}
+position = Vector2( 530, 116 )
+collision_layer = 3
+collision_mask = 3
 
 [node name="Actions" type="Node" parent="GameBoard/Pawns/EncounterPawn"]
 
@@ -630,13 +539,15 @@ facing = {
 script = ExtResource( 3 )
 formation = ExtResource( 11 )
 
+[node name="Sprite" type="Sprite" parent="GameBoard/Pawns/EncounterPawn"]
+position = Vector2( 1, -18 )
+scale = Vector2( 0.2251, 0.170554 )
+texture = ExtResource( 10 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Pawns/EncounterPawn"]
-position = Vector2( 0, -3 )
+position = Vector2( -3, -19 )
 shape = SubResource( 21 )
 
-[node name="Sprite" type="Sprite" parent="GameBoard/Pawns/EncounterPawn"]
-position = Vector2( 1, 1 )
-scale = Vector2( 0.109562, 0.0889213 )
-texture = ExtResource( 10 )
+[node name="Tween" type="Tween" parent="GameBoard/Pawns/EncounterPawn"]
 
 [connection signal="body_entered" from="GameBoard/Pawns/EncounterPawn" to="GameBoard/Pawns/EncounterPawn/Actions/StartCombat" method="_on_EncounterPawn_body_entered"]

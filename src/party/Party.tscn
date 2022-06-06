@@ -25,6 +25,7 @@ pawn_anim_path = NodePath("GodettePawnAnim")
 growth = ExtResource( 3 )
 
 [node name="Battler" parent="Godette" index="0"]
+visible = false
 party_member = true
 turn_order_icon = ExtResource( 4 )
 
@@ -37,8 +38,12 @@ skill = ExtResource( 7 )
 script = ExtResource( 8 )
 
 [node name="GodettePawnAnim" parent="Godette" instance=ExtResource( 9 )]
+visible = false
+
+[node name="GodettePawnAnim2" parent="Godette" instance=ExtResource( 9 )]
 
 [node name="Robi" parent="." instance=ExtResource( 2 )]
+visible = false
 pawn_anim_path = NodePath("RobiPawnAnim")
 growth = ExtResource( 10 )
 
@@ -56,9 +61,6 @@ level = 0
 script = ExtResource( 8 )
 
 [node name="RobiPawnAnim" parent="Robi" instance=ExtResource( 14 )]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimationTree")

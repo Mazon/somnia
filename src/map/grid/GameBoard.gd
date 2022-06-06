@@ -9,7 +9,7 @@ enum CELL_TYPES { EMPTY = -1, ACTOR, OBSTACLE, OBJECT }
 
 var pathfinder: Pathfinder = Pathfinder.new()
 onready var pawns: YSort = $Pawns
-onready var spawning_point = $SpawningPoint
+#onready var spawning_point = $SpawningPoint
 
 
 func _ready():

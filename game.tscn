@@ -27,7 +27,6 @@ script = ExtResource( 8 )
 motion_mirroring = Vector2( 1440, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
 texture = ExtResource( 3 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -58,21 +57,20 @@ layer = 1
 follow_viewport_enable = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-visible = false
 motion_scale = Vector2( 2, 0 )
 motion_mirroring = Vector2( 1440, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxForeground/ParallaxLayer"]
-visible = false
+scale = Vector2( 1, 0.65625 )
 texture = ExtResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-margin_left = 1.0
-margin_top = 169.0
-margin_right = 491.0
-margin_bottom = 305.0
+margin_left = -246.0
+margin_top = 168.0
+margin_right = 554.0
+margin_bottom = 304.0
 theme = SubResource( 15 )
 alignment = 1
 
@@ -177,59 +175,59 @@ align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
 margin_left = 112.0
-margin_right = 299.0
+margin_right = 454.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-margin_left = 303.0
-margin_right = 490.0
+margin_left = 458.0
+margin_right = 800.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
-margin_right = 187.0
+margin_right = 342.0
 margin_bottom = 86.0
 size_flags_vertical = 4
 alignment = 1
 
 [node name="CharInfo" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 
 [node name="STR" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/STR"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/STR"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/STR"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "STR"
 valign = 1
 
 [node name="HP" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo"]
 margin_top = 18.0
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 32.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/HP"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/HP"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
@@ -244,37 +242,37 @@ valign = 1
 
 [node name="LUCK" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo"]
 margin_top = 36.0
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 50.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/LUCK"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/LUCK"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/LUCK"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "LUCK"
 valign = 1
 
 [node name="WILL" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo"]
 margin_top = 54.0
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 68.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/WILL"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/WILL"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
@@ -290,137 +288,137 @@ valign = 1
 
 [node name="INT" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo"]
 margin_top = 72.0
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 86.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/INT"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/INT"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/CharInfo/INT"]
-margin_right = 91.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "INT"
 valign = 1
 
 [node name="TargetInfo" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 95.0
-margin_right = 187.0
+margin_left = 173.0
+margin_right = 342.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 
 [node name="ATT" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/ATT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/ATT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "50%"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/ATT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "ATT"
 valign = 1
 
 [node name="HP" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo"]
 margin_top = 18.0
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 32.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/HP"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/HP"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/HP"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "HP"
 valign = 1
 
 [node name="LUCK" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo"]
 margin_top = 36.0
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 50.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/LUCK"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/LUCK"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/LUCK"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "LUCK"
 valign = 1
 
 [node name="WILL" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo"]
 margin_top = 54.0
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 68.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/WILL"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/WILL"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/WILL"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "WILL"
 valign = 1
 
 [node name="INT" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo"]
 margin_top = 72.0
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 86.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/INT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 
 [node name="Value" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/INT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "10"
 align = 1
 valign = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer2/HBoxContainer/TargetInfo/INT"]
-margin_right = 92.0
+margin_right = 169.0
 margin_bottom = 14.0
 text = "INT"
 valign = 1
@@ -428,11 +426,8 @@ valign = 1
 [node name="level" parent="." instance=ExtResource( 12 )]
 
 [node name="Door" parent="." instance=ExtResource( 10 )]
-position = Vector2( -335, 131 )
+position = Vector2( -313, 132 )
 target_scene = ExtResource( 11 )
-
-[node name="Player" parent="." instance=ExtResource( 9 )]
-position = Vector2( 15.7, 125.4 )
 
 [node name="UserInterface" type="CanvasLayer" parent="."]
 script = ExtResource( 16 )
@@ -441,3 +436,7 @@ script = ExtResource( 16 )
 visible = false
 
 [node name="Hotbar" parent="UserInterface" instance=ExtResource( 7 )]
+position = Vector2( -241, -209 )
+
+[node name="Player" parent="." instance=ExtResource( 9 )]
+position = Vector2( -5, 133 )

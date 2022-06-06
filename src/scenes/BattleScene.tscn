@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/scenes/BattleScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Pixellari.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/background/bg_crypt_001.png" type="Texture" id=3]
 [ext_resource path="res://src/UserInterface.gd" type="Script" id=4]
 [ext_resource path="res://assets/themes/ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://src/Hotbar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 963, 24 )
@@ -264,6 +265,9 @@ margin_bottom = -998.0
 custom_fonts/font = SubResource( 6 )
 text = "Turn: 0"
 align = 1
+
+[node name="Hotbar" parent="UserInterface" instance=ExtResource( 6 )]
+position = Vector2( 892, 677 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -31, 33 )

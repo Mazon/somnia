@@ -235,7 +235,9 @@ func go_to_next_combatant():
 		
 		
 		if current_combatant.player_id == player.id:
+			
 			# if it's a player combatant, show the ui
+			
 			show_combatant_actions(current_combatant)
 		else:
 			# if it's a enemy combatant, the player ai, chooses an action
@@ -249,7 +251,9 @@ func show_combatant_actions(current_combatant):
 	for action in current_combatant.get_actions():
 		var new_action_button = Button.new()
 		new_action_button.text = action.action_name
-		# each button is connected to the function that shows the available targets for it
+		#var action = "basic_attack"
+		
+	# each button is connected to the function that shows the available targets for it
 		new_action_button.connect("pressed", self, "show_action_targets", [current_combatant, action])
 		$UserInterface/Actions.add_child(new_action_button)
 	

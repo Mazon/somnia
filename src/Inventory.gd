@@ -55,15 +55,17 @@ func able_to_put_into_slot(slot: SlotClass):
 	var holding_item = find_parent("UserInterface").holding_item
 	if holding_item == null:
 		return true
-	var holding_item_category = JsonData.item_data[holding_item.item_name]["ItemCategory"]
+	#var holding_item_category = JsonData.item_data[holding_item.item_name]["ItemCategory"]
+	if Database.item_data.has(holding_item.item_name):
+		var holding_item_category = Database.item_data[holding_item.item_name["ItemCategory"]]
 	
-	if slot.slotType == SlotClass.SlotType.SHIRT:
-		return holding_item_category == "Shirt"
-	elif slot.slotType == SlotClass.SlotType.PANTS:
-		return holding_item_category == "Pants"
-	elif slot.slotType == SlotClass.SlotType.SHOES:
-		return holding_item_category == "Shoes"
-	return true
+		if slot.slotType == SlotClass.SlotType.SHIRT:
+			return holding_item_category == "Shirt"
+		elif slot.slotType == SlotClass.SlotType.PANTS:
+			return holding_item_category == "Pants"
+		elif slot.slotType == SlotClass.SlotType.SHOES:
+			return holding_item_category == "Shoes"
+		return true
 		
 func left_click_empty_slot(slot: SlotClass):
 	if able_to_put_into_slot(slot):
@@ -83,7 +85,9 @@ func left_click_different_item(event: InputEvent, slot: SlotClass):
 
 func left_click_same_item(slot: SlotClass):
 	if able_to_put_into_slot(slot):
-		var stack_size = int(JsonData.item_data[slot.item.item_name]["StackSize"])
+		#var stack_size = int(JsonData.item_data[slot.item.item_name]["StackSize"])
+		var stack_size = int(Database.inventory(slot.item.item_name["StackSize"]))
+		print(stack_size)
 		var able_to_add = stack_size - slot.item.item_quantity
 		if able_to_add >= find_parent("UserInterface").holding_item.item_quantity:
 			PlayerInventory.add_item_quantity(slot, find_parent("UserInterface").holding_item.item_quantity)

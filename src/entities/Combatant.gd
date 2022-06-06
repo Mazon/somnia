@@ -4,6 +4,8 @@ var action_reference = load("res://src/entities/Action.tscn")
 var status_reference = load("res://src/entities/Status.tscn")
 var buff_reference = load("res://src/entities/Buff.tscn")
 
+var hotbar = load("res://src/Hotbar.tscn")
+
 var combatant_name = "Missing string"
 
 var current_hp = 1
@@ -40,13 +42,20 @@ func init(data, starting_position):
 	if (data.has("animations")):
 		$Animations.add_child(data.animations.instance())
 	
+	
+	# this is the combatants actions.
 	for action in data.actions:
+		# create a empty action instance
 		var new_action = action_reference.instance()
-		if Database.action_data.has(action):
-			var action_data = Database.action_data[action]
-			new_action.init(action_data)
+		
+		# If item have a skill.
+		for i in Database.item_data:
+			if Database.item_data[i].skill == action:
 			
-			$Actions.add_child(new_action)
+				var action_data = Database.skill_data[action]
+	
+				new_action.init(action_data)
+				$Actions.add_child(new_action)
 	
 	global_position = starting_position
 

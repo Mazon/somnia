@@ -11,28 +11,21 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Hotbar" type="Node2D"]
+position = Vector2( 885, 855 )
 script = ExtResource( 3 )
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
-margin_left = 158.0
-margin_top = 232.0
-margin_right = 320.0
-margin_bottom = 254.0
+margin_right = 162.0
+margin_bottom = 22.0
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HotbarSlots" type="GridContainer" parent="."]
-margin_left = 160.0
-margin_top = 234.0
-margin_right = 332.0
-margin_bottom = 252.0
+margin_left = 3.0
+margin_top = 9.47701
+margin_right = 175.0
+margin_bottom = 27.477
 custom_constants/hseparation = 2
 columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HotbarSlot1" type="Panel" parent="HotbarSlots"]
 margin_right = 18.0
@@ -90,12 +83,9 @@ rect_min_size = Vector2( 18, 18 )
 script = ExtResource( 2 )
 
 [node name="ActiveItemLabel" type="Label" parent="."]
-margin_left = 159.762
-margin_top = 217.523
-margin_right = 237.762
-margin_bottom = 231.523
+margin_left = 2.76199
+margin_top = -7.0
+margin_right = 80.762
+margin_bottom = 7.0
 custom_fonts/font = SubResource( 1 )
 text = "Sample Text"
-__meta__ = {
-"_edit_use_anchors_": false
-}

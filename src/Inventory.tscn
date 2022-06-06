@@ -14,26 +14,24 @@ region_rect = Rect2( 0, 0, 18, 18 )
 region_rect = Rect2( 0, 0, 18, 18 )
 
 [node name="Inventory" type="Node2D"]
+position = Vector2( 618, 397 )
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 117.558
-margin_top = 78.7939
-margin_right = 324.558
-margin_bottom = 190.794
+margin_left = 400.0
+margin_top = 400.0
+margin_right = 607.0
+margin_bottom = 512.0
 texture = ExtResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 213.324
-margin_top = 100.0
-margin_right = 319.324
-margin_bottom = 188.0
+margin_left = 465.0
+margin_top = 419.0
+margin_right = 602.0
+margin_bottom = 507.0
 custom_constants/vseparation = 4
 custom_constants/hseparation = 4
 columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slot1" type="Panel" parent="GridContainer"]
 margin_right = 18.0
@@ -207,13 +205,10 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="EquipSlots" type="GridContainer" parent="."]
-margin_left = 174.079
-margin_top = 111.787
-margin_right = 192.079
-margin_bottom = 173.787
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 445.0
+margin_top = 429.0
+margin_right = 596.0
+margin_bottom = 491.0
 
 [node name="ShirtSlot" type="Panel" parent="EquipSlots"]
 margin_right = 18.0

@@ -8,7 +8,7 @@ const combatant_data = {
 		"speed": 4,
 		"protection": 20,
 		"max_hp": 13,
-		"actions": ["basic_attack", "basic_heal", "basic_bleed", "basic_poison", "basic_group_heal", "clear_dot"],
+		"actions": ["sword_attack", "basic_heal", "basic_bleed", "basic_poison", "basic_group_heal", "clear_dot"],
 		"animations": preload("res://assets/animations/combatants/KnightAnim.tscn")
 	},
 	"butcher": {
@@ -62,7 +62,7 @@ const combatant_data = {
 		"animations": preload("res://assets/animations/combatants/CandleCaptainAnim.tscn")
 	},
 	"candle_trickster": {
-		"name": "Candle Trickster",
+		"name":"Candle Trickster",
 		"min_attack": 8,
 		"max_attack": 14,
 		"speed": 7,
@@ -70,6 +70,36 @@ const combatant_data = {
 		"max_hp": 22,
 		"actions": ["basic_attack"],
 		"animations": preload("res://assets/animations/combatants/CandleTricksterAnim.tscn")
+	}
+}
+
+const skill_data = {
+		"sword_attack": {
+		"name": "Basic Attack",
+		"damage_percentage": 95,
+		"target": Constants.ActionTarget_EnemySingle
+	}
+}
+
+const item_data = {
+	"Iron Sword": {
+		"ItemCategory": "Resource",
+		"StackSize": 99,
+		"skill": "sword_attack",
+		"Description": "A sword"
+	},
+	"slime_potion": {
+		"ItemCategory": "Consumable",
+		"AddHealth": 5,
+		"StackSize": 99,
+		"skill": "",
+		"Description": "It smeels bad"
+	},
+	"Blue_Jeans": {
+		"ItemCategory": "Pants",
+		"StackSize": 1,
+		"skill": "",
+		"Description": "Blue Jeans"
 	}
 }
 

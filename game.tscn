@@ -434,9 +434,10 @@ script = ExtResource( 16 )
 
 [node name="Inventory" parent="UserInterface" instance=ExtResource( 13 )]
 visible = false
+position = Vector2( -250, -76 )
 
 [node name="Hotbar" parent="UserInterface" instance=ExtResource( 7 )]
-position = Vector2( -241, -209 )
+position = Vector2( 996, 929 )
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
 position = Vector2( -5, 133 )

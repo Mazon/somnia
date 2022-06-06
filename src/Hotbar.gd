@@ -47,7 +47,18 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 			elif slot.item:
 				left_click_not_holding(slot)
 			update_active_item_label()
+		elif event.button_index == BUTTON_RIGHT && event.pressed:
+			if slot.item:
+				var item_description = Database.item_data[slot.item.item_name]
+				emit_signal("pressed", self, "show_action_targets", ["Knight", item_description])
+				print(item_description)
+				
 
+func get_all_slots():
+	for slot in slots:
+		if slot.item:
+			print(slot.item.item_name)
+			
 func left_click_empty_slot(slot: SlotClass):
 	PlayerInventory.add_item_to_empty_slot(find_parent("UserInterface").holding_item, slot)
 	slot.putIntoSlot(find_parent("UserInterface").holding_item)
@@ -63,7 +74,9 @@ func left_click_different_item(event: InputEvent, slot: SlotClass):
 	find_parent("UserInterface").holding_item = temp_item
 
 func left_click_same_item(slot: SlotClass):
-	var stack_size = int(JsonData.item_data[slot.item.item_name]["StackSize"])
+	#var stack_size = int(JsonData.item_data[slot.item.item_name]["StackSize"])
+	var stack_size = int(Database.item_data[slot.item.item_name["StackSize"]])
+	print(stack_size)
 	var able_to_add = stack_size - slot.item.item_quantity
 	if able_to_add >= find_parent("UserInterface").holding_item.item_quantity:
 		PlayerInventory.add_item_quantity(slot, find_parent("UserInterface").holding_item.item_quantity)
@@ -80,4 +93,3 @@ func left_click_not_holding(slot: SlotClass):
 	find_parent("UserInterface").holding_item = slot.item
 	slot.pickFromSlot()
 	find_parent("UserInterface").holding_item.global_position = get_global_mouse_position()
-

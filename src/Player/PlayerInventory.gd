@@ -9,16 +9,18 @@ const NUM_HOTBAR_SLOTS = 8
 
 var active_item_slot = 0
 
+# TODO: Create Save/Load hotbar and inventory.
+# Equipment Hardcoded for testing..
 var inventory = {
 	0: ["Iron Sword", 1],  #--> slot_index: [item_name, item_quantity]
-	1: ["Iron Sword", 1],  #--> slot_index: [item_name, item_quantity]
-	2: ["Slime Potion", 98],
-	3: ["Slime Potion", 45],
+	#1: ["Iron Sword", 1],  #--> slot_index: [item_name, item_quantity]
+	#2: ["Slime Potion", 98],
+	#3: ["Slime Potion", 1],
 }
 
 var hotbar = {
-	0: ["Iron Sword", 1],  #--> slot_index: [item_name, item_quantity]
-	3: ["Slime Potion", 45],
+	#0: ["Iron Sword", 1],  #--> slot_index: [item_name, item_quantity]
+	#3: ["Slime Potion", 45],
 }
 
 var equips = {
@@ -33,7 +35,9 @@ func add_item(item_name, item_quantity):
 	slot_indices.sort()
 	for item in slot_indices:
 		if inventory[item][0] == item_name:
-			var stack_size = int(JsonData.item_data[item_name]["StackSize"])
+			#var stack_size = int(JsonData.item_data[item_name]["StackSize"])
+			var stack_size = Database.inventory[item_name["StackSize"]]
+			
 			var able_to_add = stack_size - inventory[item][1]
 			if able_to_add >= item_quantity:
 				inventory[item][1] += item_quantity

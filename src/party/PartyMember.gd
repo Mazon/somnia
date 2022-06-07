@@ -5,7 +5,7 @@ extends Node2D
 
 class_name PartyMember
 
-signal level_changed(new_value, old_value)
+
 
 export var pawn_anim_path: NodePath
 export var growth: Resource
@@ -31,7 +31,7 @@ func update_stats(before_stats: CharacterStats):
 	var after_level = growth.get_level(experience)
 	if before_level != after_level:
 		stats = growth.create_stats(experience)
-		emit_signal("level_changed", after_level, before_level)
+		EventBus.emit_signal("playerlevel_changed", after_level, before_level)
 	battler.stats = stats
 
 

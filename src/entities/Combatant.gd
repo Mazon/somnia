@@ -4,8 +4,6 @@ var action_reference = load("res://src/entities/Action.tscn")
 var status_reference = load("res://src/entities/Status.tscn")
 var buff_reference = load("res://src/entities/Buff.tscn")
 
-var hotbar = load("res://src/Hotbar.tscn")
-
 var combatant_name = "Missing string"
 
 var current_hp = 1
@@ -21,9 +19,6 @@ var player_id = ""
 
 var fixed_position = Vector2.ZERO
 
-signal combatant_hp_changed()
-signal status_changed()
-signal buffs_changed()
 
 func _ready():
 	randomize()
@@ -41,7 +36,6 @@ func init(data, starting_position):
 	protection = int(data.protection)
 	if (data.has("animations")):
 		$Animations.add_child(data.animations.instance())
-	
 	
 	# this is the combatants actions.
 	for action in data.actions:
@@ -113,7 +107,7 @@ func inflict_damage(damage):
 		if current_hp == 0:
 			die()
 	EventBus.emit_signal("create_damage_label", damage, get_target_position(), Color("b72c69"))
-	emit_signal("combatant_hp_changed", current_hp, max_hp)
+	EventBus.emit_signal("combatant_hp_changed", current_hp, max_hp)
 
 func heal_hp(amount):
 	var was_ko = current_hp <= 0
@@ -123,34 +117,34 @@ func heal_hp(amount):
 		if was_ko:
 			EventBus.emit_signal("combatant_revived", self)
 	EventBus.emit_signal("create_damage_label", amount, global_position + Vector2(0, -20), Color("2cb744"))
-	emit_signal("combatant_hp_changed", current_hp, max_hp)
+	EventBus.emit_signal("combatant_hp_changed", current_hp, max_hp)
 
 func add_status(status_data):
 	var new_status = status_reference.instance()
 	new_status.init(status_data)
 	$Status.add_child(new_status)
 	
-	emit_signal("status_changed")
+	EventBus.emit_signal("status_changed")
 
 func clear_status(status_type):
 	for status in $Status.get_children():
 		if status.status_type == status_type:
 			status.queue_free()
-	emit_signal("status_changed")
+	EventBus.emit_signal("status_changed")
 
 func add_buff(buff_data):
 	var new_buff = buff_reference.instance()
 	new_buff.init(buff_data)
 	$Buffs.add_child(new_buff)
 	
-	emit_signal("buffs_changed")
+	EventBus.emit_signal("buffs_changed")
 
 func consume_buffs():
 	for buff in $Buffs.get_children():
 		buff.consume()
 		yield(get_tree().create_timer(.01), "timeout")
 	
-	emit_signal("buffs_changed")
+	EventBus.emit_signal("buffs_changed")
 
 func die():
 	EventBus.emit_signal("remove_combatant_from_queue", self)

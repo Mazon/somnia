@@ -19,10 +19,10 @@ export var quest_reference: PackedScene
 func interact() -> void:
 #	get_tree().paused = false
 #	if not active:
-#		emit_signal("finished")
+#		EventBus.emit_signal("finished")
 #		return
 #	var quest: Quest = quest_reference.instance()
 #	if not QuestSystem.is_available(quest):
 #		return
 #	QuestSystem.start(quest)
-	emit_signal("finished")
+	EventBus.emit_signal("finished")

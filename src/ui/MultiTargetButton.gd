@@ -2,7 +2,7 @@ extends Node2D
 
 export (PackedScene) var target_button_reference = load("res://src/ui/EnemyTargetButton.tscn")
 
-signal pressed()
+
 
 func _ready():
 	pass # Replace with function body.
@@ -12,13 +12,13 @@ func init(targets):
 	for target in targets:
 		var new_target_button = target_button_reference.instance()
 		new_target_button.global_position = target
-		new_target_button.connect("pressed", self, "press")
-		new_target_button.connect("mouse_entered", self, "mouse_entered")
-		new_target_button.connect("mouse_exited", self, "mouse_exited")
+		EventBus.connect("target_pressed", self, "press")
+		EventBus.connect("target_mouse_entered", self, "mouse_entered")
+		EventBus.connect("target_mouse_exited", self, "mouse_exited")
 		add_child(new_target_button)
 
 func press():
-	emit_signal("pressed")
+	EventBus.emit_signal("action_pressed")
 
 func mouse_entered():
 	for child in get_children():

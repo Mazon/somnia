@@ -25,4 +25,4 @@ func interact() -> void:
 #		return
 #	QuestSystem.deliver(quest)
 #	active = false
-	emit_signal("finished")
+	EventBus.emit_signal("finished")

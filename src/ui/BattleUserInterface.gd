@@ -1,0 +1,14 @@
+extends CanvasLayer
+var holding_item = null
+
+func _input(event):
+	if event.is_action_pressed("inventory"):
+		print("No Inventory avail during battle")
+	if event.is_action_pressed("ui_up"):
+		PlayerInventory.active_item_scroll_down()
+	elif event.is_action_pressed("ui_down"):
+		PlayerInventory.active_item_scroll_up()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.

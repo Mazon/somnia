@@ -6,7 +6,7 @@
 extends PawnActor
 class_name PawnInteractive
 
-signal interaction_finished(pawn)
+
 
 onready var raycasts: Node2D = $Raycasts
 onready var dialogue_balloon: Sprite = $DialogueBalloon
@@ -98,7 +98,7 @@ func start_interaction() -> void:
 	for action in actions:
 		action.interact()
 		yield(action, "finished")
-	emit_signal("interaction_finished", self)
+	EventBus.emit_signal("interaction_finished", self)
 	if vanish_on_interaction:
 		queue_free()
 	get_tree().paused = false

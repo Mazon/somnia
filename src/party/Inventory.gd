@@ -6,8 +6,7 @@ export (int) var MAX_COINS = 999
 var coins: int = 0
 var content = {}
 
-signal item_count_changed(item, amount)
-signal coins_count_changed(amount)
+
 
 
 func add(item: Item, amount: int = 1) -> void:
@@ -24,19 +23,19 @@ func remove(item: Item, amount: int = 1):
 	content[item] -= amount
 	if content[item] == 0:
 		content.erase(item)
-		emit_signal("item_count_changed", item, 0)
+		EventBus.emit_signal("item_count_changed", item, 0)
 	else:
-		emit_signal("item_count_changed", item, content[item])
+		EventBus.emit_signal("item_count_changed", item, content[item])
 
 
 func add_coins(amount: int) -> void:
 	coins = min(coins + amount, MAX_COINS)
-	emit_signal("coins_changed", coins)
+	EventBus.emit_signal("coins_changed", coins)
 
 
 func remove_coins(amount: int) -> void:
 	coins = max(0, coins - amount)
-	emit_signal("coins_changed", coins)
+	EventBus.emit_signal("coins_changed", coins)
 
 
 func get_consumables() -> Array:

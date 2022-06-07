@@ -6,7 +6,6 @@ export (String) var enemy_code setget change_anim
 
 func _ready():
 	if enemy_code != "":
-		print("test")
 		return
 	if (Database.combatant_data.has(enemy_code)):
 		var anim_combatant = Database.combatant_data[enemy_code].animations.instance()

@@ -1,7 +1,6 @@
 extends Node
 
 # Player types and ids
-
 enum PlayerType {
 	Player = 0,
 	AI = 1

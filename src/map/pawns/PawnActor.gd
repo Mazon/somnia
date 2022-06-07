@@ -24,7 +24,7 @@ func update_look_direction(direction):
 
 
 func move_to(target_position):
-	emit_signal("moved", position, target_position)
+	EventBus.emit_signal("moved", position, target_position)
 	set_process(false)
 
 	# Move the node to the target cell instantly,
